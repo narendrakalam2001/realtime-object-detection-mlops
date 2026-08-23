@@ -1,0 +1,50 @@
+[
+  {
+    "decision": "PROMOTED",
+    "reason": "No existing champion \u2014 first model met precision/latency SLA, auto-promoted",
+    "challenger_variant": "YOLOv8m",
+    "challenger_map50_95": 0.5438,
+    "challenger_precision": 0.7514,
+    "challenger_latency_ms": 99.53,
+    "champion_variant": null,
+    "champion_map50_95": null,
+    "gates": {
+      "map_improvement_passed": null,
+      "precision_floor_passed": true,
+      "latency_ceiling_passed": true
+    },
+    "evaluated_at": "2026-08-17 01:00:41"
+  },
+  {
+    "decision": "REJECTED",
+    "reason": "Gates failed: mAP50-95 improvement -0.0097 < 0.005",
+    "evaluated_at": "2026-08-18 11:51:21",
+    "challenger_variant": "YOLOv8s",
+    "challenger_map50_95": 0.5341,
+    "challenger_precision": 0.7779,
+    "challenger_latency_ms": 31.5,
+    "champion_variant": "YOLOv8m",
+    "champion_map50_95": 0.5438,
+    "gates": {
+      "map_improvement_passed": false,
+      "precision_floor_passed": true,
+      "latency_ceiling_passed": true
+    }
+  },
+  {
+    "decision": "PROMOTED",
+    "reason": "No valid existing champion \u2014 model met precision/latency SLA, auto-promoted",
+    "challenger_variant": "YOLOv8s",
+    "challenger_map50_95": 0.5341,
+    "challenger_precision": 0.7779,
+    "challenger_latency_ms": 30.8,
+    "champion_variant": null,
+    "champion_map50_95": null,
+    "gates": {
+      "map_improvement_passed": null,
+      "precision_floor_passed": true,
+      "latency_ceiling_passed": true
+    },
+    "evaluated_at": "2026-08-18 12:16:48"
+  }
+]

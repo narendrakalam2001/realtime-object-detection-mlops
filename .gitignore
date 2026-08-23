@@ -1,0 +1,61 @@
+# ============================================================
+# .gitignore — Real-Time Object Detection ML System
+# ============================================================
+# Design principle: exclude only what's LARGE and REGENERABLE.
+# Everything Render / Streamlit Cloud need to serve out of the box
+# — the champion registry, model cards, experiment results, PSI
+# reference stats, and the demo image set — is deliberately NOT
+# ignored below, so a fresh `git clone` + deploy works without
+# re-running the training pipeline first.
+# ============================================================
+
+# ── Python ────────────────────────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+*.egg-info/
+.ipynb_checkpoints/
+.coverage
+
+# ── Environments ──────────────────────────────────────────────
+.venv/
+venv/
+
+# ── OS ────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ── Auto-downloaded benchmark dataset ────────────────────────
+# coco128 (~7MB) re-downloads automatically on first use — not
+# needed to serve the API/dashboard, only to re-run training.
+# Ignored wherever it ends up (project root or notebooks/, in case
+# a notebook run resolves the dataset path differently).
+datasets/
+notebooks/data/
+notebooks/datasets/
+
+# ── Ultralytics run artifacts / caches ───────────────────────
+runs/
+*.cache
+
+# ── Pretrained YOLO weights — NEVER commit large binaries ────
+# The Dockerfile re-downloads the champion's weights fresh at
+# build time (see Dockerfile's RUN step, reads latest_model.json).
+# Locally, ultralytics auto-downloads whichever weights are
+# requested the first time YOLO(weights) is called.
+*.pt
+detection_models/*.pt
+
+# ── Live-generated production logs ───────────────────────────
+# Each deploy should accumulate its own prediction history rather
+# than shipping with someone else's stale log data.
+logs/*.csv
+
+# ============================================================
+# DELIBERATELY NOT IGNORED — required for Render / Streamlit Cloud
+# ============================================================
+#   data/demo_images/*.jpg        -> sample dataset, ships with the repo
+#   detection_models/*.json       -> champion registry, model cards, challenger log
+#   detection_models/*.csv        -> experiment results, PSI reference stats
+#   docs/**                        -> architecture diagram, screenshots, gifs, reports

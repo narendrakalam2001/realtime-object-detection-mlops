@@ -1,0 +1,51 @@
+{
+  "model_version": "v1",
+  "model_name": "YOLOv8s",
+  "weights_file": "yolov8s.pt",
+  "trained_at": "2026-08-18 12:16:48",
+  "project": "Real-Time Object Detection System",
+  "provenance": "Pretrained on COCO train2017 by Ultralytics \u2014 no local training run",
+  "dataset": {
+    "source": "coco128 (Ultralytics) \u2014 a 128-image subset of real COCO train2017",
+    "download": "Auto-downloaded via ultralytics on first use \u2014 no manual download",
+    "val_set_size": 128,
+    "note": "Metrics below are computed by ultralytics' own validator (model.val()) against coco128's real ground-truth labels \u2014 genuine mAP/precision/recall, not a proxy. coco128 is a 128-image sanity-check subset (not the full 5,000-image COCO val2017), so its mAP will differ from the officially published val2017 benchmark reported alongside it below."
+  },
+  "thresholds": {
+    "confidence": 0.25,
+    "iou": 0.6
+  },
+  "metrics": {
+    "map50_95": 0.5341,
+    "map50": 0.6664,
+    "precision": 0.7779,
+    "recall": 0.6861,
+    "mean_latency_ms": 30.8,
+    "fps": 32.47
+  },
+  "published_coco_benchmark": {
+    "map50_95": 44.9,
+    "map50": 61.8,
+    "params_m": 11.2,
+    "flops_g": 28.6
+  },
+  "alert_decisions": {
+    "NORMAL": 53,
+    "ALERT": 50,
+    "CRITICAL": 25
+  },
+  "cost_evaluation": {
+    "total_ground_truth_instances": 929,
+    "estimated_true_positives": 637.4,
+    "estimated_false_negatives": 291.6,
+    "estimated_false_positives": 182.0,
+    "estimated_missed_loss": 145806.55,
+    "estimated_false_alarm_cost": 3639.64,
+    "total_estimated_cost": 149446.19
+  },
+  "calibration": {
+    "status": "fitted",
+    "n_points": 769,
+    "method": "isotonic regression on IoU-matched detections"
+  }
+}

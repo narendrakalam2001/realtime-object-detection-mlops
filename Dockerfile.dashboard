@@ -1,0 +1,17 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+COPY requirements_dashboard.txt .
+RUN pip install --no-cache-dir -r requirements_dashboard.txt
+
+COPY src/ ./src/
+COPY monitoring/ ./monitoring/
+COPY detection_models/ ./detection_models/
+COPY logs/ ./logs/
+
+EXPOSE 8501
+
+ENV OBJECT_DETECTION_API_URL=https://realtime-object-detection-mlops.onrender.com
+
+CMD ["streamlit", "run", "monitoring/monitoring_dashboard.py", "--server.port=8501", "--server.address=0.0.0.0"]

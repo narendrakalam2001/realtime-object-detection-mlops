@@ -1,0 +1,30 @@
+version: "3.9"
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: object-detection-api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./logs:/app/logs
+      - ./detection_models:/app/detection_models
+    restart: unless-stopped
+
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile.dashboard
+    container_name: object-detection-dashboard
+    ports:
+      - "8501:8501"
+    environment:
+      - OBJECT_DETECTION_API_URL=http://api:8000
+    volumes:
+      - ./logs:/app/logs
+      - ./detection_models:/app/detection_models
+    depends_on:
+      - api
+    restart: unless-stopped

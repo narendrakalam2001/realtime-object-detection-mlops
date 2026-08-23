@@ -1,0 +1,7 @@
+{
+  "variant": "YOLOv8s",
+  "weights": "yolov8s.pt",
+  "conf_threshold": 0.25,
+  "iou_threshold": 0.6,
+  "model_card_path": "detection_models\\model_card_YOLOv8s_v1.json"
+}

@@ -1,0 +1,4 @@
+variant,weights,best_conf,best_iou,coco128_map50_95,coco128_map50,coco128_precision,coco128_recall,mean_latency_ms,fps,published_map50_95,published_map50,params_m
+YOLOv8n,yolov8n.pt,0.25,0.6,0.3626,0.4672,0.6871,0.4984,16.59,60.29,37.3,52.6,3.2
+YOLOv8s,yolov8s.pt,0.25,0.6,0.5341,0.6664,0.7779,0.6861,30.8,32.47,44.9,61.8,11.2
+YOLOv8m,yolov8m.pt,0.25,0.6,0.5438,0.6759,0.7514,0.7,97.7,10.24,50.2,67.2,25.9

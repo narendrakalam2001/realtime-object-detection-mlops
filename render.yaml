@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: realtime-object-detection-mlops
+    env: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+
+  - type: web
+    name: realtime-object-detection-dashboard
+    env: docker
+    dockerfilePath: ./Dockerfile.dashboard
+    plan: free
+    envVars:
+      - key: OBJECT_DETECTION_API_URL
+        value: https://realtime-object-detection-mlops.onrender.com
