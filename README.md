@@ -55,7 +55,7 @@ Real numbers from `model.val()` against coco128 (128 images, 929 real ground-tru
 | Service | URL |
 |---|---|
 | 🚀 **FastAPI (Swagger UI)** | [https://realtime-object-detection-mlops.onrender.com/docs](https://realtime-object-detection-mlops.onrender.com/docs) |
-| 📊 **Monitoring Dashboard** | [https://realtime-object-detection-mlops.streamlit.app](https://realtime-object-detection-mlops.streamlit.app) |
+| 📊 **Monitoring Dashboard** | [https://realtime-object-detection-mlops.streamlit.app](https://realtime-object-detection-mlops.streamlit.app/) |
 | 📓 **EDA Notebook** | [notebooks/Real_Time_Object_Detection_EDA.ipynb](notebooks/Real_Time_Object_Detection_EDA.ipynb) |
 
 > ⚠️ Render free tier: first request may take 30–60 seconds (cold start).
@@ -79,9 +79,9 @@ Real numbers from `model.val()` against coco128 (128 images, 929 real ground-tru
 ║  ┌─────────────────── BENCHMARKING & TUNING PIPELINE ──────────────────────┐     ║
 ║  │                                                                         │     ║
 ║  │  ┌──────────────────┐    ┌───────────────┐    ┌──────────────────────┐  │     ║
-║  │  │  Dual             │    │  3 Variants   │    │  Real Evaluation     │  │     ║
-║  │  │  Preprocessing    │───▶│  YOLOv8n/s/m  │───▶│  mAP·P·R·latency     │  │     ║
-║  │  │  stream · batch   │    │  pretrained   │    │  cost · calibration  │  │     ║
+║  │  │  Dual             │    │  3 Variants   │    │  Real Evaluation    │  │     ║
+║  │  │  Preprocessing    │───▶│  YOLOv8n/s/m  │───▶│  mAP·P·R·latency   │  │     ║
+║  │  │  stream · batch   │    │  pretrained   │    │  cost · calibration │  │     ║
 ║  │  └──────────────────┘    └───────────────┘    └──────────────────────┘  │     ║
 ║  │                                                                         │     ║
 ║  │  conf × iou grid search · GPU-crash resilient (auto CPU retry)          │     ║
@@ -91,7 +91,7 @@ Real numbers from `model.val()` against coco128 (128 images, 929 real ground-tru
 ║  ┌──────────────────────── CHAMPION-CHALLENGER ────────────────────────────┐     ║
 ║  │                                                                         │     ║
 ║  │  Gate 1: mAP improvement   ≥ +0.5pp  → relative, skipped if no champion │     ║
-║  │  Gate 2: precision floor   ≥ 0.55    → always enforced                 │     ║
+║  │  Gate 2: precision floor   ≥ 0.55    → always enforced                  │     ║
 ║  │  Gate 3: latency ceiling   ≤ 84ms    → 120ms × 0.70 safety margin       │     ║
 ║  │                                                                         │     ║
 ║  │  Stale champion (fails today's gates) → auto-replaced regardless of mAP │     ║
@@ -103,8 +103,8 @@ Real numbers from `model.val()` against coco128 (128 images, 929 real ground-tru
 ║  │  Model Loader → Prediction Service → Detection / Alert Engine → FastAPI │     ║
 ║  │                                                                         │     ║
 ║  │  POST /predict     → upload frame  (→ detections + NORMAL/ALERT/CRIT)   │     ║
-║  │  GET  /health       → API health check  (→ {status, model_loaded})     │     ║
-║  │  GET  /model_info   → champion registry  (→ variant, thresholds)       │     ║
+║  │  GET  /health       → API health check  (→ {status, model_loaded})      │     ║
+║  │  GET  /model_info   → champion registry  (→ variant, thresholds)        │     ║
 ║  │                                                                         │     ║
 ║  │  Alert Engine: retail_shelf · warehouse_safety · security_intrusion     │     ║
 ║  └───────────────────────────────────┬─────────────────────────────────────┘     ║
