@@ -50,7 +50,7 @@ detection_models/*.pt
 # ── Live-generated production logs ───────────────────────────
 # Each deploy should accumulate its own prediction history rather
 # than shipping with someone else's stale log data.
-logs/*.csv
+!logs/*.csv
 
 # ============================================================
 # DELIBERATELY NOT IGNORED — required for Render / Streamlit Cloud
